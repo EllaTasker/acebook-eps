@@ -27,6 +27,11 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Start server on port 3030
+        run: |
+          PORT=3030 npm start &
+          npx wait-on http://localhost:3030
+
       - name: Run tests (lint, unit, integration)
         env:
           MONGODB_URL: mongodb://localhost:27017/acebook_test
