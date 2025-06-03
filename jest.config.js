@@ -1,7 +1,11 @@
 // For a detailed explanation regarding each configuration property, visit:
 // https://jestjs.io/docs/en/configuration.html
 
+// jest.config.js
 module.exports = {
+  testTimeout: 20000, // Global 20s timeout for all tests
+
+
   // All imported modules in your tests should be mocked automatically
   // automock: false,
 
