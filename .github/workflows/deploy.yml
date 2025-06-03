@@ -9,6 +9,12 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
+    services:
+      mongo:
+        image: mongo:5.0
+        ports:
+          - 27017:27017
+
     steps:
       - name: Checkout repo
         uses: actions/checkout@v3
@@ -22,6 +28,8 @@ jobs:
         run: npm install
 
       - name: Run tests (lint, unit, integration)
+        env:
+          MONGODB_URL: mongodb://localhost:27017/acebook_test
         run: npm test
 
   deploy:
